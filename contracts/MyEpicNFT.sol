@@ -17,7 +17,7 @@ contract MyEpicNFT is ERC721URIStorage  {
     Counters.Counter private _tokenIds;
 
     //We need to pass the name of our NFTs token and its symbol.
-    constructor() ERC721 ("BeastLion", "SQUARE") {
+    constructor() ERC721 ("FeelGood", "SQUARE") {
         console.log("This is my first NFT Contract. Boom!");
     }
 
@@ -30,7 +30,7 @@ contract MyEpicNFT is ERC721URIStorage  {
         _safeMint(msg.sender, newItemId);
 
         // Set the NFTs data.
-        _setTokenURI(newItemId, "https://jsonkeeper.com/b/YZCD");
+        _setTokenURI(newItemId, "data:application/json;base64,ewogICAgIm5hbWUiOiAiV2h5U29TZXJpb3VzIiwKICAgICJkZXNjcmlwdGlvbiI6ICJBbiBORlQgZnJvbSB0aGUgRmVlbCBHb29kIENvbGxlY3Rpb24uIiwKICAgICJpbWFnZSI6ICAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhCeVpYTmxjblpsUVhOd1pXTjBVbUYwYVc4OUluaE5hVzVaVFdsdUlHMWxaWFFpSUhacFpYZENiM2c5SWpBZ01DQXpOVEFnTXpVd0lqNEtJQ0FnSUR4emRIbHNaVDR1WW1GelpTQjdJR1pwYkd3NklIZG9hWFJsT3lCbWIyNTBMV1poYldsc2VUb2djMlZ5YVdZN0lHWnZiblF0YzJsNlpUb2dNVFJ3ZURzZ2ZUd3ZjM1I1YkdVK0NpQWdJQ0E4Y21WamRDQjNhV1IwYUQwaU1UQXdKU0lnYUdWcFoyaDBQU0l4TURBbElpQm1hV3hzUFNKaWJHRmpheUlnTHo0S0lDQWdJRHgwWlhoMElIZzlJalV3SlNJZ2VUMGlOVEFsSWlCamJHRnpjejBpWW1GelpTSWdaRzl0YVc1aGJuUXRZbUZ6Wld4cGJtVTlJbTFwWkdSc1pTSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0krVjJoNVUyOVRaWEpwYjNWelBDOTBaWGgwUGdvOEwzTjJaejQ9Igp9");
 
         console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
 
