@@ -27,7 +27,7 @@ contract MyEpicNFT is ERC721URIStorage  {
     string[] thirdWords = ["Apocalyptic", "Sabotage", "Exquisite", "Sinister", "Silhouette", "Bumblebee", "Noob", "Itachi","Gay","Toast","Megumi","Witch","Bombastic","Bumpkin","Cruse","Juggernaut","Pog","Champ", "Fire", "Hole"];
 
     //We need to pass the name of our NFTs token and its symbol.
-    constructor() ERC721 ("FeelGood", "NFT-Prince") {
+    constructor() ERC721 ("TheThreeWordsMOTO", "NFT-Prince") {
         console.log("This is my first NFT Contract. Boom!");
     }
 
