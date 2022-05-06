@@ -3,6 +3,7 @@ import './App.css';
 import twitterLogo from './assets/twitter.svg';
 import { ethers } from "ethers";
 import myEpicNft from './utils/MyEpicNFT.json';
+import Header from "./components/Header/Header";
 
 // Constants
 const TWITTER_HANDLE = '_buildspace';
@@ -114,6 +115,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Header />
       <div className="container">
         <div className="header-container">
         <p className="header gradient-text">NFT Builder</p>
