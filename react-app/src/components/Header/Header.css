@@ -1,12 +1,11 @@
 .Header {
     top: 0;
     max-height: 70px;
-    width: 100%;
     padding: 10px 40px;
     display: grid;
     grid-template-areas: "logo nav";
-    /* background-color: #282c34; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    /* background-color: #282c34;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   }
   
   .Logo {
@@ -20,6 +19,7 @@
     grid-template-columns: repeat(2, auto);
     align-items: center;
     justify-items: center;
+    z-index: 1;
   }
   .Nav a {
     color: #fff;

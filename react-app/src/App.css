@@ -123,3 +123,12 @@
     background-position: 0% 50%;
   }
 }
+.terminal_container {
+  background-color: black;
+  color: green;
+  width: 500px;
+  text-align: left;
+  padding: 10px;
+  margin: auto;
+  margin-top: 20px;
+}

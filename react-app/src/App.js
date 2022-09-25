@@ -4,31 +4,41 @@ import twitterLogo from './assets/twitter.svg';
 import { ethers } from "ethers";
 import myEpicNft from './utils/MyEpicNFT.json';
 import Header from "./components/Header/Header";
+import { Console, Hook, Unhook } from 'console-feed'
 
 // Constants
 const TWITTER_HANDLE = '_buildspace';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 const OPENSEA_LINK = '';
 const TOTAL_MINT_COUNT = 50;
+let LOGS = [
+  'click on "Mint NFT" button to start !'
+]
 
 const App = () => {
 
-  /*
-  * Just a state variable we use to store our user's public wallet. Don't forget to import useState.
-  */
   const [currentAccount, setCurrentAccount] = useState("");
   
-  /*
-  * Gotta make sure this is async.
-  */
+  const [logs, setLogs] = useState([])
+
+  useEffect(() => {
+    Hook(
+      window.console,
+      (log) => setLogs((currLogs) => [...currLogs, log]),
+      false
+    )
+    return () => Unhook(window.console)
+  }, [])
+  
+  
   const checkIfWalletIsConnected = async () => {
     const { ethereum } = window;
 
     if (!ethereum) {
-        console.log("Make sure you have metamask!");
+        console.log("You don't have metamask! Install it to continue: https://metamask.io/download/");
         return;
     } else {
-        console.log("We have the ethereum object", ethereum);
+        // console.log("We have the ethereum object", ethereum);
     }
 
     /*
@@ -60,14 +70,8 @@ const App = () => {
         return;
       }
 
-      /*
-      * Fancy method to request access to account.
-      */
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
-      /*
-      * Boom! This should print out public address once we authorize Metamask.
-      */
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]); 
     } catch (error) {
@@ -77,7 +81,6 @@ const App = () => {
 
   const askContractToMintNft = async () => {
     const CONTRACT_ADDRESS = "0x8a02a6d1e8ac5cf4971792eca219d2645a422ed3";
-  
     try {
       const { ethereum } = window;
   
@@ -85,20 +88,16 @@ const App = () => {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, myEpicNft.abi, signer);
-  
-        console.log("Going to pop wallet now to pay gas...")
+        console.log("Going to pop wallet now to pay gas...");
         let nftTxn = await connectedContract.makeAnEpicNFT();
-  
-        console.log("Mining...please wait.")
+        console.log("Mining...please wait.");
         await nftTxn.wait();
-        
         console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
-  
       } else {
         console.log("Ethereum object doesn't exist!");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
     }
   }
 
@@ -119,7 +118,7 @@ const App = () => {
       <div className="container">
         <div className="header-container">
         <p className="header gradient-text">NFT Builder</p>
-          <p className="header gradient-text">My NFT Collection</p>
+          <p className="header gradient-text">EPIC NFT COLLECTION</p>
           <p className="sub-text">
             Each unique. Each beautiful. Discover your NFT today.
           </p>
@@ -130,6 +129,9 @@ const App = () => {
               Mint NFT
             </button>
           )}
+          <div className="terminal_container">
+            <Console logs={logs} variant="dark" styles={{LOG_COLOR: "green"}} />
+          </div>
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
