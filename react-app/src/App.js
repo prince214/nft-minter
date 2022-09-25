@@ -7,13 +7,10 @@ import Header from "./components/Header/Header";
 import { Console, Hook, Unhook } from 'console-feed'
 
 // Constants
-const TWITTER_HANDLE = '_buildspace';
-const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
+const DEV_HANDLE = 'Prince Paraste';
+const DEV_LINK = `https://prince-paraste.netlify.app/`;
 const OPENSEA_LINK = '';
 const TOTAL_MINT_COUNT = 50;
-let LOGS = [
-  'click on "Mint NFT" button to start !'
-]
 
 const App = () => {
 
@@ -134,13 +131,13 @@ const App = () => {
           </div>
         </div>
         <div className="footer-container">
-          <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
+          {/* <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} /> */}
           <a
             className="footer-text"
-            href={TWITTER_LINK}
+            href={DEV_LINK}
             target="_blank"
             rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
+          >{`built by @${DEV_HANDLE}`}</a>
         </div>
       </div>
     </div>
